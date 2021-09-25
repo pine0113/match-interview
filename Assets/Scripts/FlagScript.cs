@@ -8,7 +8,7 @@ public class FlagScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {       
         if (collision.gameObject.tag == "Player")
-            UIController.restartPanelon = true;
+            UIController.OpenRestartPanel();
     }
 
 

@@ -19,11 +19,10 @@ public class DuckMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerControlsDisabled) {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
-            float horizontalInput = Input.GetAxis("Horizontal");
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-        
+        if (!PlayerControlsDisabled) {
 
             if (horizontalInput > 0.01f)
             {
@@ -41,23 +40,15 @@ public class DuckMovement : MonoBehaviour
 
             anim.SetBool("run", (horizontalInput !=0) );
             anim.SetBool("grounded", grounded);
-        }        
-    }
-
-    private void FixedUpdate()
-    {
-        CheckEnd();
-    }
-
-    private void CheckEnd()
-    {
-        //Debug.Log("x:"+ transform.position.x.ToString()+ ",end:" +endPosition.ToString()+"d:"+PlayerControlsDisabled+ "U:"+ UIController.restartPanelon);
+        }
 
         if (transform.position.x < endPosition)
         {
-            //UIController.restartPanelon = true;
+            body.velocity = new Vector2( Mathf.Abs((horizontalInput * speed)), body.velocity.y);
         }
     }
+   
+
 
     private void Jump()
     {

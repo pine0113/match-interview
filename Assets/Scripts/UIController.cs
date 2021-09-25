@@ -4,61 +4,58 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    public GameObject backpackPanel;
-    public GameObject descriptPanel;
-    public GameObject restartPanel;
-    public static bool restartPanelon;
+    public static GameObject backpackPanel;
+    public static GameObject descriptPanel;
+    public static GameObject restartPanel;
 
     private void Awake()
     {
-        backpackPanel.SetActive(false);
-        restartPanel.SetActive(false);
+    backpackPanel = GameObject.Find("Panel_backpack");
+    descriptPanel = GameObject.Find("Panel_descript");
+    restartPanel = GameObject.Find("Panel_restart");
+    backpackPanel.SetActive(false);
+    restartPanel.SetActive(false);
     }
 
     private void Update()
     {
-        if (restartPanelon)
-        {
-            OpenRestartPanel();
-        }
-        else
-        {
-            CloseRestartPanel();
-           
-        }
+      
 
     }
 
-    public  void OpenBackpackPanel()
+    public static void OpenBackpackPanel()
     {
+        
         backpackPanel.SetActive(true);
     }
 
-    public void CloseBackpckPanel()
+    public static void CloseBackpckPanel()
     {
         backpackPanel.SetActive(false);
     }
 
-    public void OpenDescriptPanel()
+    public static void OpenDescriptPanel()
     {
         descriptPanel.SetActive(true);
     }
 
-    public void CloseDescriptPanel()
+    public static void CloseDescriptPanel()
     {
         descriptPanel.SetActive(false);
     }
 
-    public void OpenRestartPanel()
+    public static void OpenRestartPanel()
     {
         restartPanel.SetActive(true);
         DuckMovement.PlayerControlsDisabled = true;
+        GameObject d = GameObject.Find("duck");
+        d.transform.position.Set(d.transform.position.x + 20, d.transform.position.y, d.transform.position.z);
     }
 
-    public void CloseRestartPanel()
+    public static void CloseRestartPanel()
     {     
         restartPanel.SetActive(false);
-        DuckMovement.PlayerControlsDisabled = false;        
+        DuckMovement.PlayerControlsDisabled = false;       
 
     }
 
