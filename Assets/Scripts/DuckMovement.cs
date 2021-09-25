@@ -3,10 +3,14 @@ using UnityEngine;
 public class DuckMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private UIInventory uIInventory;
     private Rigidbody2D body;
     private Animator anim;
     private bool grounded;
     private float endPosition;
+    private Inventory inventory;
+
+
 
     public static bool PlayerControlsDisabled = false;
 
@@ -15,6 +19,8 @@ public class DuckMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         endPosition = GameObject.Find("End Flag").transform.position.x;
+        inventory = new Inventory();
+        uIInventory.SetInventory(inventory);
     }
 
     private void Update()

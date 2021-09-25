@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
         backpackPanel.SetActive(false);
     }
 
-    public static void OpenDescriptPanel()
+    public static void OpenDescriptPanel(Item item)
     {
         descriptPanel.SetActive(true);
     }
