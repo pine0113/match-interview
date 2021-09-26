@@ -15,7 +15,7 @@ public class UIInventory : MonoBehaviour
     {
         selectedItem = null;
         itemSlotContainer = transform.Find("itemSlotContainer");
-        itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
+        itemSlotTemplate = transform.Find("itemSlotTemplate");
        
     }
 
@@ -28,7 +28,7 @@ public class UIInventory : MonoBehaviour
     }
 
     public void SetInventory(Inventory inventory){
-        Debug.Log("enter SetInventory" + inventory.getItemList().Count);
+        //Debug.Log("enter SetInventory" + inventory.getItemList().Count);
         this.inventory = inventory;
         RefreshInventoryItems();
     }
@@ -38,14 +38,23 @@ public class UIInventory : MonoBehaviour
     public void RefreshInventoryItems()
     {
         itemSlotContainer = transform.Find("itemSlotContainer");
-        itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
+        itemSlotTemplate = transform.Find("itemSlotTemplate");
 
-        Debug.Log(" enter RefreshInventoryItems" + (inventory.getItemList()).Count);
+        //Debug.Log(" enter RefreshInventoryItems" + (inventory.getItemList()).Count);
+        foreach (Transform child in itemSlotContainer.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
         int x = 0;
         int y = 0;
         float itemSlotCellsize = 100f;
+        //Debug.Log("itemSlotContainer:" + itemSlotContainer.childCount);
+
+
+
         foreach (Item item in inventory.getItemList()) {
-            Debug.Log("add:" + item.name + "UI");
+            //Debug.Log("add:" + item.name + "UI");
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
             

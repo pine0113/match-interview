@@ -70,11 +70,18 @@ public class DuckMovement : MonoBehaviour
     public void useItem(Item item)
     {
         inventory.useItem(item);
+        refreshUI();
     }
 
     public void pickItem(Item item)
     {
         inventory.addItem(item);
+        refreshUI();
+    }
+
+    public void refreshUI()
+    {
+        uIInventory.SetInventory(inventory);
     }
     
 }

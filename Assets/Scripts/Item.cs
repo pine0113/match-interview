@@ -148,7 +148,7 @@ public class Item : MonoBehaviour
         {
             gameObject.SetActive(false);
             FindObjectOfType<DuckMovement>().pickItem(this);
-            FindObjectOfType<UIInventory>().RefreshInventoryItems();
+          
         }
 
 

@@ -49,19 +49,26 @@ public class Inventory : MonoBehaviour
 
     public void useItem(Item item)
     {
-        if (item.amount > 0)
+        Debug.Log("use item:" + item.name + ">" + item.amount);
+        Debug.Log("itemList Count:" + itemList.Count);
+        if (item.amount >= 1)
         {
             item.amount--;
-            UIController.RefreshDescriptPanel(item);
-
-            if (item.amount == 0)
-            {
-                itemList.Remove(item);
-                //Destroy(item);
-                UIController.CloseDescriptPanel();
-            }
-
+            Debug.Log("after minus:" + item.name + ">" + item.amount);
+            Debug.Log("itemList Count:" + itemList.Count);
         }
+        if (item.amount == 0)
+        {
+            itemList.Remove(item);
+            Debug.Log("after remove:" + item.name + ">" + item.amount);
+            Debug.Log("itemList Count:" + itemList.Count);
+            Destroy(item);
+            Debug.Log("after destroy:" + item.name + ">" + item.amount);
+            Debug.Log("itemList Count:" + itemList.Count);
+            UIController.CloseDescriptPanel();
+        }
+        UIController.RefreshDescriptPanel(item);
+        FindObjectOfType<DuckMovement>().refreshUI();
     }
 
 }

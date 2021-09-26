@@ -43,7 +43,8 @@ public class UIController : MonoBehaviour
         descriptPanel.SetActive(true);
 
         RefreshDescriptPanel(item);
-        (descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate { inventory.useItem(item);  });
+        (descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.RemoveAllListeners();
+        (descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate { FindObjectOfType<DuckMovement>().useItem(item); });        
 
     }
 
