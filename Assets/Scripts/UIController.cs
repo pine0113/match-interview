@@ -42,8 +42,8 @@ public class UIController : MonoBehaviour
         (descriptPanel.transform.Find("item_count").GetComponent<Text>()).text = item.amount.ToString();
         (descriptPanel.transform.Find("item_name").GetComponent<Text>()).text = item.GetName();
         (descriptPanel.transform.Find("item_descript").GetComponent<Text>()).text = item.GetDescript();
-        //(descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate { });
-
+        //(descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate {  });
+       
     }
 
     public static void CloseDescriptPanel()

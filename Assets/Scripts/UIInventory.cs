@@ -31,7 +31,7 @@ public class UIInventory : MonoBehaviour
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
             
-            itemSlotRectTransform.anchoredPosition = new Vector2( x * itemSlotCellsize -110, + y * itemSlotCellsize - 50);
+            itemSlotRectTransform.anchoredPosition = new Vector2( x * itemSlotCellsize,  - y * itemSlotCellsize);
 
             (itemSlotRectTransform.Find("image").GetComponent<Image>()).sprite=item.GetSprite();          
             (itemSlotRectTransform.Find("text_count").GetComponent<Text>()).text = item.amount.ToString();
