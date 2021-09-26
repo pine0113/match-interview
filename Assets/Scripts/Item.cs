@@ -18,6 +18,7 @@ public class Item : MonoBehaviour
         none
     }
 
+
     public enum InteractiveType { None,Pickup,Examine}
     public InteractiveType type;
 
@@ -28,6 +29,10 @@ public class Item : MonoBehaviour
     public string descript;
     public Sprite sprite;
 
+    private void Awake()
+    {
+        setupValue();
+    }
     private void Reset()
     {
         GetComponent<Collider2D>().isTrigger = true;
@@ -57,6 +62,12 @@ public class Item : MonoBehaviour
     public Item(ItemType inputItemType)
     {
         itemType = inputItemType;
+        setupValue();
+    }
+
+
+    public void setupValue()
+    {
         switch (itemType)
         {
             default:
@@ -75,7 +86,7 @@ public class Item : MonoBehaviour
                 name = "白色藥水";
                 descript = "不斷冒泡的不知名白色藥水，未封蓋";
                 break;
-            case ItemType.redPotion: 
+            case ItemType.redPotion:
                 sprite = ItemAssets.Instance.redPotionSprite;
                 name = "紅色藥水";
                 descript = "不斷冒泡的不知名紅色藥水，未封蓋";
@@ -111,7 +122,6 @@ public class Item : MonoBehaviour
                 descript = "";
                 break;
         }
-
     }
 
 
@@ -136,7 +146,6 @@ public class Item : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-
             gameObject.SetActive(false);
             FindObjectOfType<DuckMovement>().pickItem(this);
             FindObjectOfType<UIInventory>().RefreshInventoryItems();

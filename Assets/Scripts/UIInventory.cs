@@ -37,6 +37,9 @@ public class UIInventory : MonoBehaviour
 
     public void RefreshInventoryItems()
     {
+        itemSlotContainer = transform.Find("itemSlotContainer");
+        itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
+
         Debug.Log(" enter RefreshInventoryItems" + (inventory.getItemList()).Count);
         int x = 0;
         int y = 0;

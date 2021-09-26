@@ -272,6 +272,8 @@ MonoBehaviour:
   itemType: 8
   name: "\u9470\u5319"
   amount: 1
+  descript: "\u7591\u4F3C\u6709\u9632\u76DC\u82AF\u7247\u7684\u9470\u5319"
+  sprite: {fileID: 21300000, guid: e47678be4eb7e4db2bd93db64e37e84e, type: 3}
 --- !u!1001 &29820846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -713,6 +715,8 @@ MonoBehaviour:
   itemType: 2
   name: "\u767D\u8272\u85E5\u6C34"
   amount: 1
+  descript: "\u4E0D\u65B7\u5192\u6CE1\u7684\u4E0D\u77E5\u540D\u767D\u8272\u85E5\u6C34\uFF0C\u672A\u5C01\u84CB"
+  sprite: {fileID: 21300000, guid: 946ad953d5d124020bdc5738c8123d30, type: 3}
 --- !u!1 &96354474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,6 +2644,51 @@ MonoBehaviour:
   itemType: 0
   name: "\u767D\u5DE7\u514B\u529B"
   amount: 1
+  descript: "\u4E00\u5305\u5DF2\u6253\u958B\u7684\u767D\u8272\u5DE7\u514B\u529B\uFF0C\u5230\u671F\u65E5\u88AB\u5283\u6389"
+  sprite: {fileID: 21300000, guid: b87c6c07600e540d381a14b800fc8049, type: 3}
+--- !u!1 &1048139412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1048139414}
+  - component: {fileID: 1048139413}
+  m_Layer: 0
+  m_Name: sceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1048139413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048139412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5553375256324267a8b19bf88f9a338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1048139414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048139412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1073748922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3431,7 +3480,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.1135371, y: 1}
+    m_SensorSize: {x: 1.4238281, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4889,7 +4938,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2134441169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1048139413}
+        m_TargetAssemblyTypeName: sceneController, Assembly-CSharp
+        m_MethodName: ResetScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2134441169
 MonoBehaviour:
   m_ObjectHideFlags: 0
