@@ -53,7 +53,6 @@ public class DuckMovement : MonoBehaviour
             body.velocity = new Vector2( Mathf.Abs((horizontalInput * speed)), body.velocity.y);
         }
     }
-   
 
 
     private void Jump()
@@ -66,6 +65,16 @@ public class DuckMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
             grounded = true;
+    }
+
+    public void useItem(Item item)
+    {
+        inventory.useItem(item);
+    }
+
+    public void pickItem(Item item)
+    {
+        inventory.addItem(item);
     }
     
 }

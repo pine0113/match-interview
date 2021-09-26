@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item 
+public class Item : MonoBehaviour
 {
 
     public  enum ItemType{
@@ -18,15 +18,45 @@ public class Item
         none
     }
 
+    public enum InteractiveType { None,Pickup,Examine}
+    public InteractiveType type;
+
 
     public ItemType itemType;
+    public string name;
     public int amount;
-    private string name;
-    private string descript;
-    private Sprite sprite;
+    public string descript;
+    public Sprite sprite;
 
-    public Item(ItemType itemType)
+    private void Reset()
     {
+        GetComponent<Collider2D>().isTrigger = true;
+        gameObject.layer = 10;
+    }
+
+
+    public void Interact()
+    {
+
+        switch (type)
+        {
+            case InteractiveType.None:
+                 break;
+
+            case InteractiveType.Pickup:
+                FindObjectOfType<DuckMovement>().pickItem(this);
+                
+                break;
+
+            case InteractiveType.Examine:
+                break;
+        }
+    }
+
+
+    public Item(ItemType inputItemType)
+    {
+        itemType = inputItemType;
         switch (itemType)
         {
             default:
@@ -99,5 +129,19 @@ public class Item
     public string GetDescript()
     {
         return descript;        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.tag == "Player")
+        {
+
+            gameObject.SetActive(false);
+            FindObjectOfType<DuckMovement>().pickItem(this);
+            FindObjectOfType<UIInventory>().RefreshInventoryItems();
+        }
+
+
     }
 }

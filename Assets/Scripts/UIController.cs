@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     public static GameObject descriptPanel;
     public static GameObject restartPanel;
 
+
     private void Awake()
     {
     backpackPanel = GameObject.Find("Panel_backpack");
@@ -16,6 +17,7 @@ public class UIController : MonoBehaviour
     restartPanel = GameObject.Find("Panel_restart");
     backpackPanel.SetActive(false);
     restartPanel.SetActive(false);
+    descriptPanel.SetActive(false);
     }
 
     private void Update()
@@ -26,7 +28,7 @@ public class UIController : MonoBehaviour
 
     public static void OpenBackpackPanel()
     {
-        
+
         backpackPanel.SetActive(true);
     }
 
@@ -35,16 +37,16 @@ public class UIController : MonoBehaviour
         backpackPanel.SetActive(false);
     }
 
-    public static void OpenDescriptPanel(Item item)
+    public static void OpenDescriptPanel(Item item,Inventory inventory)
     {
+        Debug.Log("open des panel");
         descriptPanel.SetActive(true);
-        (descriptPanel.transform.Find("item_image").GetComponent<Image>()).sprite = item.GetSprite();
-        (descriptPanel.transform.Find("item_count").GetComponent<Text>()).text = item.amount.ToString();
-        (descriptPanel.transform.Find("item_name").GetComponent<Text>()).text = item.GetName();
-        (descriptPanel.transform.Find("item_descript").GetComponent<Text>()).text = item.GetDescript();
-        //(descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate {  });
-       
+
+        RefreshDescriptPanel(item);
+        (descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate { inventory.useItem(item);  });
+
     }
+
 
     public static void CloseDescriptPanel()
     {
@@ -66,4 +68,12 @@ public class UIController : MonoBehaviour
 
     }
 
+    public static void RefreshDescriptPanel(Item item)
+    {
+       
+        descriptPanel.transform.Find("item_image").GetComponent<Image>().sprite = item.GetSprite();
+        descriptPanel.transform.Find("item_count").GetComponent<Text>().text = item.amount.ToString();
+        descriptPanel.transform.Find("item_name").GetComponent<Text>().text = item.GetName();
+        descriptPanel.transform.Find("item_descript").GetComponent<Text>().text = item.GetDescript();
+    }
 }

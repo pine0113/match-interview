@@ -23,7 +23,23 @@ public class Inventory : MonoBehaviour
 
     public void addItem(Item item)
     {
-        itemList.Add(item);
+        bool match = false;
+        foreach (Item i in itemList)
+        {
+            
+            if (i.itemType == item.itemType)
+            {
+                match = true;
+                i.amount += item.amount;
+            }
+            
+        }
+        if (!match) { 
+            itemList.Add(item);
+        }
+        //FindObjectOfType<UIInventory>().RefreshInventoryItems();
+
+        Debug.Log(itemList.Count);
     }
 
     public List<Item> getItemList()
@@ -36,9 +52,12 @@ public class Inventory : MonoBehaviour
         if (item.amount > 0)
         {
             item.amount--;
+            UIController.RefreshDescriptPanel(item);
 
             if (item.amount == 0)
             {
+                itemList.Remove(item);
+                //Destroy(item);
                 UIController.CloseDescriptPanel();
             }
 
