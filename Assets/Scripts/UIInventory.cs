@@ -10,11 +10,11 @@ public class UIInventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
 
-
     private void Awake()
     {
         itemSlotContainer = transform.Find("itemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
+       
     }
 
     public void SetInventory(Inventory inventory){
@@ -32,13 +32,11 @@ public class UIInventory : MonoBehaviour
             itemSlotRectTransform.gameObject.SetActive(true);
             
             itemSlotRectTransform.anchoredPosition = new Vector2( x * itemSlotCellsize -110, + y * itemSlotCellsize - 50);
-            Image image=itemSlotRectTransform.Find("image").GetComponent<Image>();
-            image.sprite = item.GetSprite();
 
-            Text text = itemSlotRectTransform.Find("text_count").GetComponent<Text>();
-            text.text = item.amount.ToString();
-
-            itemSlotRectTransform.GetComponent<Button>().onClick.AddListener(delegate { inventory.useItem(item); });
+            (itemSlotRectTransform.Find("image").GetComponent<Image>()).sprite=item.GetSprite();          
+            (itemSlotRectTransform.Find("text_count").GetComponent<Text>()).text = item.amount.ToString();
+            
+            itemSlotRectTransform.GetComponent<Button>().onClick.AddListener(delegate { UIController.OpenDescriptPanel(item); });
 
             x++;
             if (x > 2)
@@ -48,8 +46,8 @@ public class UIInventory : MonoBehaviour
             }
 
          }
-        
 
     }
 
+   
 }

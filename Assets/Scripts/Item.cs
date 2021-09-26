@@ -14,61 +14,90 @@ public class Item
         yellowPotion,
         greenPotion,
         bluePotion,
-        key
+        key,
+        none
     }
 
 
     public ItemType itemType;
     public int amount;
-    public Sprite GetSprite()
+    private string name;
+    private string descript;
+    private Sprite sprite;
+
+    public Item(ItemType itemType)
     {
         switch (itemType)
         {
             default:
-            case ItemType.whiteChoco:   return ItemAssets.Instance.whiteChocoSprite;
-            case ItemType.blackChoco:   return ItemAssets.Instance.blackChocoSprite;
-            case ItemType.whitePotion:  return ItemAssets.Instance.whitePotionSprite;
-            case ItemType.redPotion:    return ItemAssets.Instance.redPotionSprite;
-            case ItemType.orangePotion: return ItemAssets.Instance.orangePotionSprite;
-            case ItemType.yellowPotion: return ItemAssets.Instance.yellowPotionSprite;
-            case ItemType.greenPotion:   return ItemAssets.Instance.greenPotionSprite;
-            case ItemType.bluePotion:   return ItemAssets.Instance.bluePotionSprite;
-            case ItemType.key:          return ItemAssets.Instance.keySprite;
+            case ItemType.whiteChoco:
+                sprite = ItemAssets.Instance.whiteChocoSprite;
+                name = "白巧克力";
+                descript = "一包已打開的白色巧克力，到期日被劃掉";
+                break;
+            case ItemType.blackChoco:
+                sprite = ItemAssets.Instance.blackChocoSprite;
+                name = "黑巧克力";
+                descript = "一包已打開的黑色巧克力，到期日被劃掉";
+                break;
+            case ItemType.whitePotion:
+                sprite = ItemAssets.Instance.whitePotionSprite;
+                name = "白色藥水";
+                descript = "不斷冒泡的不知名白色藥水，未封蓋";
+                break;
+            case ItemType.redPotion: 
+                sprite = ItemAssets.Instance.redPotionSprite;
+                name = "紅色藥水";
+                descript = "不斷冒泡的不知名紅色藥水，未封蓋";
+                break;
+            case ItemType.orangePotion:
+                sprite = ItemAssets.Instance.orangePotionSprite;
+                name = "橙色藥水";
+                descript = "不斷冒泡的不知名橙色藥水，未封蓋";
+                break;
+            case ItemType.yellowPotion:
+                sprite = ItemAssets.Instance.yellowPotionSprite;
+                name = "黃色藥水";
+                descript = "不斷冒泡的不知名黃色藥水，未封蓋";
+                break;
+            case ItemType.greenPotion:
+                sprite = ItemAssets.Instance.greenPotionSprite;
+                name = "綠色藥水";
+                descript = "不斷冒泡的不知名綠色藥水，未封蓋";
+                break;
+            case ItemType.bluePotion:
+                sprite = ItemAssets.Instance.bluePotionSprite;
+                name = "藍色藥水";
+                descript = "不斷冒泡的不知名藍色藥水，未封蓋";
+                break;
+            case ItemType.key:
+                sprite = ItemAssets.Instance.keySprite;
+                name = "鑰匙";
+                descript = "疑似有防盜芯片的鑰匙";
+                break;
+            case ItemType.none:
+                sprite = ItemAssets.Instance.keySprite;
+                name = "";
+                descript = "";
+                break;
         }
-        
+
+    }
+
+
+    public Sprite GetSprite()
+    {
+        return sprite;        
     }
 
     public string GetName()
     {
-        switch (itemType)
-        {
-            default:
-            case ItemType.whiteChoco: return "白巧克力";
-            case ItemType.blackChoco: return "黑巧克力";
-            case ItemType.whitePotion: return "白色藥水";
-            case ItemType.redPotion: return "紅色藥水";
-            case ItemType.orangePotion: return "橙色藥水";
-            case ItemType.yellowPotion: return "黃色藥水";
-            case ItemType.greenPotion: return "綠色藥水";
-            case ItemType.bluePotion: return "藍色藥水";
-            case ItemType.key: return "鑰匙";
-        }
+        return name;
+       
     }
 
     public string GetDescript()
     {
-        switch (itemType)
-        {
-            default:
-            case ItemType.whiteChoco:   return "一包已打開的白色巧克力，到期日被劃掉";
-            case ItemType.blackChoco:   return "一包已打開的黑色巧克力，到期日被劃掉";
-            case ItemType.whitePotion:  return "不斷冒泡的不知名白色藥水，未封蓋";
-            case ItemType.redPotion:    return "不斷冒泡的不知名紅色藥水，未封蓋";
-            case ItemType.orangePotion: return "不斷冒泡的不知名橙色藥水，未封蓋";
-            case ItemType.yellowPotion: return "不斷冒泡的不知名黃色藥水，未封蓋";
-            case ItemType.greenPotion:  return "不斷冒泡的不知名綠色藥水，未封蓋";
-            case ItemType.bluePotion:   return "不斷冒泡的不知名藍色藥水，未封蓋";
-            case ItemType.key:          return "疑似有防盜芯片的鑰匙";
-        }
+        return descript;        
     }
 }

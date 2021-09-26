@@ -10,12 +10,12 @@ public class Inventory : MonoBehaviour
 
         itemList = new List<Item>();
 
-        addItem(new Item { itemType = Item.ItemType.blackChoco, amount = 2 });
-        addItem(new Item { itemType = Item.ItemType.redPotion, amount = 3 });
-        addItem(new Item { itemType = Item.ItemType.orangePotion, amount = 7 });
-        addItem(new Item { itemType = Item.ItemType.yellowPotion, amount = 1 });
-        addItem(new Item { itemType = Item.ItemType.greenPotion, amount = 4 });
-        addItem(new Item { itemType = Item.ItemType.bluePotion, amount = 5 }); 
+        addItem(new Item(Item.ItemType.blackChoco) { amount = 2 });
+        addItem(new Item(Item.ItemType.redPotion) { amount = 3 });
+        addItem(new Item(Item.ItemType.orangePotion) { amount = 7 });
+        addItem(new Item(Item.ItemType.yellowPotion) { amount = 1 });
+        addItem(new Item(Item.ItemType.greenPotion) { amount = 4 });
+        addItem(new Item(Item.ItemType.bluePotion) { amount = 5 }); 
 
 
         Debug.Log(itemList.Count);
@@ -33,7 +33,16 @@ public class Inventory : MonoBehaviour
 
     public void useItem(Item item)
     {
+        if (item.amount > 0)
+        {
+            item.amount--;
 
+            if (item.amount == 0)
+            {
+                UIController.CloseDescriptPanel();
+            }
+
+        }
     }
 
 }

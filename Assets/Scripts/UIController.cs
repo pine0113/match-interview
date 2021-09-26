@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -37,6 +38,12 @@ public class UIController : MonoBehaviour
     public static void OpenDescriptPanel(Item item)
     {
         descriptPanel.SetActive(true);
+        (descriptPanel.transform.Find("item_image").GetComponent<Image>()).sprite = item.GetSprite();
+        (descriptPanel.transform.Find("item_count").GetComponent<Text>()).text = item.amount.ToString();
+        (descriptPanel.transform.Find("item_name").GetComponent<Text>()).text = item.GetName();
+        (descriptPanel.transform.Find("item_descript").GetComponent<Text>()).text = item.GetDescript();
+        //(descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate { });
+
     }
 
     public static void CloseDescriptPanel()
