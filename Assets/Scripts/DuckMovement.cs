@@ -48,10 +48,7 @@ public class DuckMovement : MonoBehaviour
             anim.SetBool("grounded", grounded);
         }
 
-        if (transform.position.x < endPosition)
-        {
-            body.velocity = new Vector2( Mathf.Abs((horizontalInput * speed)), body.velocity.y);
-        }
+        cantMoveOverEndFlag();
     }
 
 
@@ -65,6 +62,14 @@ public class DuckMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
             grounded = true;
+    }
+
+    private void cantMoveOverEndFlag()
+    {
+        if (transform.position.x < endPosition)
+        {
+            body.velocity = new Vector2(speed, body.velocity.y);
+        }
     }
 
     public void useItem(Item item)
@@ -83,5 +88,6 @@ public class DuckMovement : MonoBehaviour
     {
         uIInventory.SetInventory(inventory);
     }
-    
+
+
 }

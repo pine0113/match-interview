@@ -5,20 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class sceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //private Animator anim;
 
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //anim = GameObject.Find("duck").GetComponent<Animator>();
+        //anim.Play("Idel", -1, 0f);
     }
 }

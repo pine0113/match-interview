@@ -44,7 +44,10 @@ public class UIController : MonoBehaviour
 
         RefreshDescriptPanel(item);
         (descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.RemoveAllListeners();
-        (descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate { FindObjectOfType<DuckMovement>().useItem(item); });        
+        (descriptPanel.transform.Find("Button_UseItem").GetComponent<Button>()).onClick.AddListener(delegate { FindObjectOfType<DuckMovement>().useItem(item); });
+
+        (descriptPanel.transform.Find("Button_UseItem").GetComponent<ButtonLongPressListener>()).onLongPress.RemoveAllListeners();
+        (descriptPanel.transform.Find("Button_UseItem").GetComponent<ButtonLongPressListener>()).onLongPress.AddListener(delegate { FindObjectOfType<DuckMovement>().useItem(item);});
 
     }
 
