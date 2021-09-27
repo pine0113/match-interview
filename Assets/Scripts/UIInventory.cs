@@ -63,7 +63,7 @@ public class UIInventory : MonoBehaviour
             (itemSlotRectTransform.Find("image").GetComponent<Image>()).sprite=item.GetSprite();          
             (itemSlotRectTransform.Find("text_count").GetComponent<Text>()).text = item.amount.ToString();
             
-            itemSlotRectTransform.GetComponent<Button>().onClick.AddListener(delegate { selectedItem = item; UIController.OpenDescriptPanel(item,inventory); });
+            itemSlotRectTransform.GetComponent<Button>().onClick.AddListener(delegate { selectedItem = item; UIController.OpenDescriptPanel(item); });
 
             x++;
             if (x > 2)

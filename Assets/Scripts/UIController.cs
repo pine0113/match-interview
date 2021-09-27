@@ -8,16 +8,19 @@ public class UIController : MonoBehaviour
     public static GameObject backpackPanel;
     public static GameObject descriptPanel;
     public static GameObject restartPanel;
-
+    private static GameObject backpackPanel_back;
+    private static GameObject descriptPanel_back;
 
     private void Awake()
     {
-    backpackPanel = GameObject.Find("Panel_backpack");
-    descriptPanel = GameObject.Find("Panel_descript");
-    restartPanel = GameObject.Find("Panel_restart");
-    backpackPanel.SetActive(false);
-    restartPanel.SetActive(false);
-    descriptPanel.SetActive(false);
+        backpackPanel = GameObject.Find("Panel_backpack");
+        backpackPanel_back = GameObject.Find("Back-backpack");
+        descriptPanel = GameObject.Find("Panel_descript");
+        descriptPanel_back = GameObject.Find("Back-descript");
+        restartPanel = GameObject.Find("Panel_restart");
+        backpackPanel.SetActive(false);
+        restartPanel.SetActive(false);
+        descriptPanel.SetActive(false);
     }
 
     private void Update()
@@ -28,17 +31,24 @@ public class UIController : MonoBehaviour
 
     public static void OpenBackpackPanel()
     {
-
+        CloseDescriptPanel();
+        backpackPanel_back.SetActive(true);
         backpackPanel.SetActive(true);
     }
 
     public static void CloseBackpckPanel()
     {
+
+        CloseDescriptPanel();
         backpackPanel.SetActive(false);
+        backpackPanel_back.SetActive(false);
+
     }
 
-    public static void OpenDescriptPanel(Item item,Inventory inventory)
+    public static void OpenDescriptPanel(Item item)
     {
+        backpackPanel_back.SetActive(false);
+        descriptPanel_back.SetActive(true);
         Debug.Log("open des panel");
         descriptPanel.SetActive(true);
 
@@ -55,6 +65,8 @@ public class UIController : MonoBehaviour
     public static void CloseDescriptPanel()
     {
         descriptPanel.SetActive(false);
+        descriptPanel_back.SetActive(false);
+        backpackPanel_back.SetActive(true);
     }
 
     public static void OpenRestartPanel()

@@ -6,7 +6,8 @@ public class Inventory : MonoBehaviour
 {
 
     private List<Item> itemList;
-    public Inventory() {
+    public Inventory()
+    {
 
         itemList = new List<Item>();
 
