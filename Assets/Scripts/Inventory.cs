@@ -49,26 +49,44 @@ public class Inventory : MonoBehaviour
 
     public void useItem(Item item)
     {
-        Debug.Log("use item:" + item.name + ">" + item.amount);
-        Debug.Log("itemList Count:" + itemList.Count);
+
+        Debug.Log(itemList.FindIndex(i => i.itemType == item.itemType));
         if (item.amount >= 1)
         {
             item.amount--;
-            Debug.Log("after minus:" + item.name + ">" + item.amount);
-            Debug.Log("itemList Count:" + itemList.Count);
+            //Debug.Log("after minus:" + item.name + ">" + item.amount);
+            //debugItemList(itemList);
         }
         if (item.amount == 0)
         {
-            itemList.Remove(item);
-            Debug.Log("after remove:" + item.name + ">" + item.amount);
-            Debug.Log("itemList Count:" + itemList.Count);
-            Destroy(item);
-            Debug.Log("after destroy:" + item.name + ">" + item.amount);
-            Debug.Log("itemList Count:" + itemList.Count);
+            //Debug.Log("before remove:" + item.name + ">" + item.amount);
+            //debugItemList(itemList);
+
+            
+
+            itemList.RemoveAt(itemList.FindIndex(i => i.itemType == item.itemType));
+
+            //Debug.Log("after remove:" + item.name + ">" + item.amount);
+            //debugItemList(itemList);
+
+            //Destroy(item);
+            //debugItemList(itemList);
             UIController.CloseDescriptPanel();
+           
         }
         UIController.RefreshDescriptPanel(item);
         FindObjectOfType<DuckMovement>().refreshUI();
+    }
+
+    private void debugItemList(List<Item> l)
+    {
+        Debug.Log("list:");
+        foreach (Item i in l)
+        {
+
+            Debug.Log("item:" + i.name + "=" + i.amount+",index:"+l);
+        }
+        Debug.Log("end-list");
     }
 
 }

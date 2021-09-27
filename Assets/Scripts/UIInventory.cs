@@ -54,7 +54,7 @@ public class UIInventory : MonoBehaviour
 
 
         foreach (Item item in inventory.getItemList()) {
-            //Debug.Log("add:" + item.name + "UI");
+            //Debug.Log("add:" + item.name + "-"+item.amount);
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
             
